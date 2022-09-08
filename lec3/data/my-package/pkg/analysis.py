@@ -12,21 +12,24 @@ def is_prime(n:int) -> int:
             return False
     return True
 
-# Vector = List[float]
+Vector = List[float]
 
-# def prime_factors(n: int) -> Vector:
-#     '''Increasing sequence of prime factors of n'''
+from IPython import embed
 
-#     if is_prime(n): return [n]
 
-#     for m in range(n):
-#         if is_prime(m) and n % m == 0:
-#             return [m] + prime_factors(n//m)
+def prime_factors(n: int) -> Vector:
+    '''Increasing sequence of prime factors of n'''
 
-# # --------------------------------------------------------------------
+    if is_prime(n): return [n]
 
-# if __name__ == '__main__':
-#     import pdb
-#     pdb.set_trace()
+    for m in range(2, n):
+        if is_prime(m) and n % m == 0:
+            return [m] + prime_factors(n//m)
+
+# --------------------------------------------------------------------
+
+if __name__ == '__main__':
+    import pdb
+    pdb.set_trace()
         
-#     print(prime_factors(30))
+    print(prime_factors(30))
